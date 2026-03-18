@@ -1,6 +1,6 @@
 ---
 name: initiating-coverage
-description: Create institutional-quality equity research initiation reports through a 5-task workflow. Tasks must be executed individually with verified prerequisites - (1) company research, (2) financial modeling, (3) valuation analysis, (4) chart generation, (5) final report assembly. Each task produces specific deliverables (markdown docs, Excel models, charts, or DOCX reports). Tasks 3-5 have dependencies on earlier tasks.
+description: 建立機構等級的台股個股研究報告，透過五步驟工作流程完成：(1) 公司研究、(2) 財務建模、(3) 估值分析、(4) 圖表製作、(5) 報告組裝。觸發條件：「啟動研究」、「建立研究報告」、「[代號] 個股研究」。
 ---
 
 # Initiating Coverage

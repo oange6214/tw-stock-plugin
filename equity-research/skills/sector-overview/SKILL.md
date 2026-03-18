@@ -1,6 +1,6 @@
 # Sector Overview
 
-description: Create comprehensive industry and sector landscape reports covering market dynamics, competitive positioning, key players, and thematic trends. Use for client requests, sector initiations, thematic research pieces, or internal knowledge building. Triggers on "sector overview", "industry report", "market landscape", "sector analysis", "industry deep dive", or "thematic research".
+description: 建立台股產業景氣報告，涵蓋市場規模、競爭格局、主要業者與主題趨勢。觸發條件：「產業報告」、「族群分析」、「產業概覽」、「[產業] 景氣」、「產業趨勢」、「主題研究」。
 
 ## Workflow
 

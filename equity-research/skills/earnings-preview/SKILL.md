@@ -1,6 +1,6 @@
 # Earnings Preview
 
-description: Build pre-earnings analysis with estimate models, scenario frameworks, and key metrics to watch. Use before a company reports quarterly earnings to prepare positioning notes, set up bull/bear scenarios, and identify what will move the stock. Triggers on "earnings preview", "what to watch for [company] earnings", "pre-earnings", "earnings setup", or "preview Q[X] for [company]".
+description: 建立財報公布前的預覽分析，包含市場預估、多空情境模擬與關鍵觀察指標。觸發條件：「盈餘預覽」、「財報前分析」、「法說會前準備」、「[公司] 財報重點」、「盈餘情境」。
 
 ## Workflow
 

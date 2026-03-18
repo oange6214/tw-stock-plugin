@@ -1,10 +1,13 @@
 {
   "mcpServers": {
     "tw-stock-agent": {
-      "type": "stdio",
-      "command": "uvx",
-      "args": ["tw-stock-agent"],
-      "env": {}
+      "command": "uv",
+      "args": [
+        "run",
+        "python",
+        "mcp_server.py"
+      ],
+      "cwd": "C:/Users/his62/tw-stock-agent"
     }
   }
 }

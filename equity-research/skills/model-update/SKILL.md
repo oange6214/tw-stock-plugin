@@ -1,6 +1,6 @@
 # Model Update
 
-description: Update financial models with new data — quarterly earnings, management guidance, macro changes, or revised assumptions. Adjusts estimates, recalculates valuation, and flags material changes. Use after earnings, guidance updates, or when assumptions need refreshing. Triggers on "update model", "plug earnings", "refresh estimates", "update numbers for [company]", "new guidance", or "revise estimates".
+description: 以最新財報、業績展望或修正假設更新財務模型，重新計算估值並標記重大變化。觸發條件：「更新模型」、「帶入財報數字」、「更新預估」、「更新 [公司] 數字」、「新展望」。
 
 ## Workflow
 

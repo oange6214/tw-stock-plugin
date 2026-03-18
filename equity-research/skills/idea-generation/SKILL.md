@@ -1,6 +1,6 @@
 # Idea Generation
 
-description: Systematic stock screening and investment idea sourcing. Combines quantitative screens, thematic research, and pattern recognition to surface new long and short ideas. Use when looking for new ideas, running screens, or conducting thematic sweeps. Triggers on "idea generation", "stock screen", "find ideas", "what looks interesting", "screen for", "new ideas", or "pitch me something".
+description: 系統化台股選股與投資想法挖掘，結合量化篩選、主題研究與型態識別。觸發條件：「選股」、「股票篩選」、「找標的」、「主題選股」、「強勢股」、「投資想法」。
 
 ## Workflow
 

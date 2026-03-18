@@ -1,6 +1,6 @@
 # Thesis Tracker
 
-description: Maintain and update investment theses for portfolio positions and watchlist names. Track key data points, catalysts, and thesis milestones over time. Use when updating a thesis with new information, reviewing position rationale, or checking if a thesis is still intact. Triggers on "update thesis for [company]", "is my thesis still intact", "thesis check", "add data point to [company]", or "review my positions".
+description: 建立並追蹤投資論點，記錄關鍵數據、催化劑與里程碑。觸發條件：「更新 [公司] 投資論點」、「論點還成立嗎」、「投資主題確認」、「加入新數據點」、「檢視持倉」。
 
 ## Workflow
 

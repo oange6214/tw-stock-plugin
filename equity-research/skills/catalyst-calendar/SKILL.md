@@ -1,6 +1,6 @@
 # Catalyst Calendar
 
-description: Build and maintain a calendar of upcoming catalysts across a coverage universe — earnings dates, conferences, product launches, regulatory decisions, and macro events. Helps prioritize attention and position ahead of events. Triggers on "catalyst calendar", "upcoming events", "what's coming up", "earnings calendar", "event calendar", or "catalyst tracker".
+description: 建立並維護追蹤標的的催化劑日曆，涵蓋財報日期、法說會、產品發布、法規決策與總經事件。觸發條件：「催化劑日曆」、「近期重要事件」、「法說會日期」、「財報日曆」、「事件追蹤」。
 
 ## Workflow
 

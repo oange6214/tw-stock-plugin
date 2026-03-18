@@ -1,6 +1,6 @@
 # Morning Note
 
-description: Draft concise morning meeting notes summarizing overnight developments, trade ideas, and key events for coverage stocks. Designed for the 7am morning meeting format — tight, opinionated, actionable. Triggers on "morning note", "morning meeting", "what happened overnight", "trade idea", "morning call prep", or "daily note".
+description: 撰寫盤前晨報，摘要隔夜美股動態、台股盤前重點、法人動向與今日交易想法。觸發條件：「晨報」、「盤前分析」、「今日盤前」、「昨夜發生什麼」、「交易想法」、「每日重點」。
 
 ## Workflow
 
