@@ -11,3 +11,5 @@ argument-hint: "[股票代號或留空檢查全部持倉]"
 - 總部位曝險是否超過設定上限
 - 大盤環境是否適合進攻
 - 是否有即將公布財報或重大訊息的風險
+
+完成風控檢查後，使用 Write 工具將完整報告儲存至 `reports/taiwan-trading/YYYY-MM-DD_risk.md`（YYYY-MM-DD 替換為今日日期）。

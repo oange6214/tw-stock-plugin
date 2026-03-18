@@ -15,3 +15,5 @@ argument-hint: "[股票代號，例如 2330]"
 - 財報健全度快速確認
 - 進場建議（時機、部位大小）
 - 停利停損設定
+
+完成分析後，使用 Write 工具將完整報告儲存至 `reports/taiwan-trading/YYYY-MM-DD_analyze_XXXX.md`（YYYY-MM-DD 為今日日期，XXXX 為股票代號）。

@@ -11,3 +11,5 @@ argument-hint: ""
 - 各族群資金動能排行
 - 當前市場情緒（貪婪/恐懼）
 - 適合短波段操作的市場條件判斷
+
+完成分析後，使用 Write 工具將完整報告儲存至 `reports/taiwan-trading/YYYY-MM-DD_market.md`（YYYY-MM-DD 替換為今日日期）。

@@ -11,3 +11,5 @@ argument-hint: ""
 - 籌碼面是否出現異常賣壓
 - 損益狀況（是否觸及停利/停損）
 - 整體曝險度評估
+
+完成檢視後，使用 Write 工具將完整報告儲存至 `reports/taiwan-trading/YYYY-MM-DD_portfolio.md`（YYYY-MM-DD 替換為今日日期）。
