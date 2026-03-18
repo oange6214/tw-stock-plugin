@@ -1,92 +1,97 @@
-# Model Update
-
+---
+name: model-update
 description: 以最新財報、業績展望或修正假設更新財務模型，重新計算估值並標記重大變化。觸發條件：「更新模型」、「帶入財報數字」、「更新預估」、「更新 [公司] 數字」、「新展望」。
+version: 1.1.0
+---
 
-## Workflow
+# 財務模型更新
 
-### Step 1: Identify What Changed
+## 工作流程
 
-Determine the update trigger:
-- **Earnings release**: New quarterly actuals to plug in
-- **Guidance change**: Company updated forward outlook
-- **Estimate revision**: Analyst changing assumptions based on new data
-- **Macro update**: Interest rates, FX, commodity prices changed
-- **Event-driven**: M&A, restructuring, new product, management change
+### 步驟一：確認更新原因
 
-### Step 2: Plug New Data
+判斷更新觸發點：
+- **財報公布**：帶入最新季度實際數字
+- **業績展望調整**：公司修正未來營運展望
+- **預估修正**：分析師依據新數據調整假設
+- **總經更新**：利率、匯率、原物料價格變動
+- **事件驅動**：併購、重組、新品上市、管理層異動
 
-#### After Earnings
-Update the model with reported actuals:
+### 步驟二：帶入新數據
 
-| Line Item | Prior Estimate | Actual | Delta | Notes |
-|-----------|---------------|--------|-------|-------|
-| Revenue | | | | |
-| Gross Margin | | | | |
-| Operating Expenses | | | | |
+#### 財報公布後
+更新模型，帶入實際公布數字：
+
+| 項目 | 原先預估 | 實際結果 | 差異 | 說明 |
+|------|---------|---------|------|------|
+| 營收 | | | | |
+| 毛利率 | | | | |
+| 營業費用 | | | | |
 | EBITDA | | | | |
 | EPS | | | | |
-| [Key metric 1] | | | | |
-| [Key metric 2] | | | | |
+| [關鍵指標 1] | | | | |
+| [關鍵指標 2] | | | | |
 
-**Segment Detail** (if applicable):
-- Update each segment's revenue and margin
-- Note any segment mix shifts
+**分部細節**（如適用）：
+- 更新各分部營收與獲利率
+- 記錄分部組合的變化
 
-**Balance Sheet / Cash Flow Updates**:
-- Cash and debt balances
-- Share count (buybacks, dilution)
-- Capex actual vs. estimate
-- Working capital changes
+**資產負債表 / 現金流更新**：
+- 現金與負債餘額
+- 股本（庫藏股買回、稀釋）
+- 資本支出實際 vs. 預估
+- 營運資金變化
 
-### Step 3: Revise Forward Estimates
+### 步驟三：修正未來預估
 
-Based on the new data, adjust forward estimates:
+根據新數據，調整未來預估：
 
-| | Old FY Est | New FY Est | Change | Old Next FY | New Next FY | Change |
-|---|-----------|-----------|--------|------------|------------|--------|
-| Revenue | | | | | | |
+| | 舊本年度預估 | 新本年度預估 | 變化 | 舊次年度預估 | 新次年度預估 | 變化 |
+|---|-----------|-----------|------|------------|------------|------|
+| 營收 | | | | | | |
 | EBITDA | | | | | | |
 | EPS | | | | | | |
 
-**Key Assumption Changes:**
-- What assumptions are you changing and why?
-- Revenue growth rate: old → new (reason)
-- Margin assumption: old → new (reason)
-- Any new items (restructuring charges, one-time gains, etc.)
+**關鍵假設變化：**
+- 調整了哪些假設？原因為何？
+- 營收成長率：舊值 → 新值（原因）
+- 利潤率假設：舊值 → 新值（原因）
+- 其他新增項目（重組費用、一次性損益等）
 
-### Step 4: Valuation Impact
+### 步驟四：估值影響
 
-Recalculate valuation with updated estimates:
+以更新後預估重新計算估值：
 
-| Valuation Method | Prior | Updated | Change |
-|-----------------|-------|---------|--------|
-| DCF fair value | | | |
-| P/E (NTM EPS × target multiple) | | | |
-| EV/EBITDA (NTM EBITDA × target multiple) | | | |
-| **Price Target** | | | |
+| 估值方法 | 原先 | 更新後 | 變化 |
+|---------|------|--------|------|
+| DCF 合理價值 | | | |
+| 本益比（NTM EPS × 目標倍數）| | | |
+| EV/EBITDA（NTM EBITDA × 目標倍數）| | | |
+| **目標價** | | | |
 
-### Step 5: Summary & Action
+### 步驟五：摘要與行動建議
 
-**Estimate Change Summary:**
-- One paragraph: what changed, why, and what it means for the stock
-- Is this a thesis-changing event or noise?
+**預估調整摘要：**
+- 一段說明：發生了什麼、原因為何、對股價的意義
+- 這是改變投資主題的事件，還是短期雜訊？
 
-**Rating / Price Target:**
-- Maintain or change rating?
-- New price target (if changed) with methodology
-- Upside/downside to current price
+**評級 / 目標價：**
+- 維持或調整評級？
+- 新目標價（如調整）及計算方法
+- 相對當前股價的上下行空間（台股以台幣計）
 
-### Step 6: Output
+### 步驟六：輸出
 
-- Updated Excel model (if user provides the existing model)
-- Estimate change summary (markdown or Word)
-- Updated price target derivation
+- 更新後的 Excel 模型（如使用者提供既有模型）
+- 預估調整摘要（Markdown 或 Word）
+- 更新後目標價推算說明
 
-## Important Notes
+## 注意事項
 
-- Always reconcile your estimates to the company's reported figures before projecting forward
-- Note any non-recurring items and whether your estimates are GAAP or adjusted
-- Track your estimate revision history — it shows your analytical progression
-- If the quarter was noisy, separate signal from noise in your estimate changes
-- Check consensus after updating — how do your revised estimates compare to the Street?
-- Share count matters — dilution from stock comp, converts, or buybacks can materially affect EPS
+- 預估前務必核對 MOPS 公開資訊觀測站的實際財報數字
+- 標記非經常性項目，說明預估基準（GAAP / IFRS 或調整後）
+- 記錄預估修正歷程，反映分析進步軌跡
+- 季度數字較雜亂時，區分信號與雜訊
+- 更新後與市場共識比較——修正後預估與法人預期的差距如何？
+- 股本稀釋效果（股票薪酬、可轉換公司債、庫藏股買回）對 EPS 影響不可忽視
+- 台股財報查詢：公開資訊觀測站（mops.twse.com.tw）→ 電子書 → 財報查詢

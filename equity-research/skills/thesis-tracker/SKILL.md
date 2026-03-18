@@ -1,64 +1,79 @@
-# Thesis Tracker
-
+---
+name: thesis-tracker
 description: 建立並追蹤投資論點，記錄關鍵數據、催化劑與里程碑。觸發條件：「更新 [公司] 投資論點」、「論點還成立嗎」、「投資主題確認」、「加入新數據點」、「檢視持倉」。
+version: 1.1.0
+---
 
-## Workflow
+# 投資論點追蹤系統
 
-### Step 1: Define or Load Thesis
+## 工作流程
 
-If creating a new thesis:
-- **Company**: Name and ticker
-- **Position**: Long or Short
-- **Thesis statement**: 1-2 sentence core thesis (e.g., "Long ACME — margin expansion from pricing power + operating leverage as mix shifts to software")
-- **Key pillars**: 3-5 supporting arguments
-- **Key risks**: 3-5 risks that would invalidate the thesis
-- **Catalysts**: Upcoming events that could prove/disprove the thesis (earnings, product launches, regulatory decisions)
-- **Target price / valuation**: What's it worth if the thesis plays out
-- **Stop-loss trigger**: What would make you exit
+### 步驟一：建立或載入論點
 
-If updating an existing thesis, ask the user for the new data point or development.
+**建立新論點時：**
+- **公司**：名稱與股票代號（例：台積電 2330）
+- **方向**：多單或空單
+- **核心論點**：1-2 句描述（例：「長多 2330 — 受惠 AI 算力擴張，CoWoS 先進封裝供不應求，帶動毛利率持續提升」）
+- **主要支撐論據**：3-5 個支持論點的具體依據
+- **主要風險**：3-5 個可能推翻論點的風險因子
+- **催化劑**：即將到來的可驗證事件（財報、法說會、新品發布、法規決策）
+- **目標價 / 估值**：論點實現後的合理價值（台幣）
+- **停損觸發條件**：哪些具體情況會讓你出場
 
-### Step 2: Update Log
+**更新既有論點時：**
+詢問使用者最新數據點或重大發展，逐一更新記錄。
 
-For each new data point or development:
+### 步驟二：更新記錄
 
-- **Date**: When this happened
-- **Data point**: What changed (earnings beat, management departure, competitor move, etc.)
-- **Thesis impact**: Does this strengthen, weaken, or neutralize a specific pillar?
-- **Action**: No change / Increase position / Trim / Exit
-- **Updated conviction**: High / Medium / Low
+每次新數據點或重大發展時記錄：
 
-### Step 3: Thesis Scorecard
+| 欄位 | 說明 |
+|------|------|
+| **日期** | 事件發生時間（YYYY/MM/DD） |
+| **數據點** | 什麼改變了（財報超預期、管理層異動、競爭對手動向等）|
+| **論點影響** | 強化 / 削弱 / 中性化了哪個支撐論據？ |
+| **行動** | 不變 / 加碼 / 減碼 / 出場 |
+| **更新後信心水準** | 高 / 中 / 低 |
 
-Maintain a running scorecard:
+### 步驟三：論點計分卡
 
-| Pillar | Original Expectation | Current Status | Trend |
-|--------|---------------------|----------------|-------|
-| Revenue growth >20% | On track | Q3 was 22% | Stable |
-| Margin expansion | Behind | Margins flat YoY | Concerning |
-| New product launch | Pending | Delayed to Q2 | Watch |
+維護持續更新的計分卡：
 
-### Step 4: Catalyst Calendar
+| 論據 | 原始預期 | 目前狀態 | 趨勢 |
+|------|---------|---------|------|
+| 營收年增 > 20% | 進行中 | Q3 達 22% | 穩定 |
+| 毛利率提升 | 落後預期 | 毛利率持平 | 需關注 |
+| 新產品上市 | 待確認 | 延至下一季 | 觀察 |
 
-Track upcoming catalysts:
+**信心水準定義：**
+- 高：多數論據順利推進，催化劑清晰
+- 中：論據好壞參半，方向待確認
+- 低：多項論據受到挑戰，考慮減碼或出場
 
-| Date | Event | Expected Impact | Notes |
-|------|-------|-----------------|-------|
-| | | | |
+### 步驟四：催化劑日曆
 
-### Step 5: Output
+追蹤即將到來的催化劑：
 
-Thesis summary suitable for:
-- Morning meeting discussion
-- Portfolio review
-- Risk committee presentation
+| 日期 | 事件 | 預期影響 | 備註 |
+|------|------|---------|------|
+| | 法說會 | | |
+| | 季報公布 | | |
+| | 產業展會 / 論壇 | | |
 
-Format: Concise markdown or Word doc with the scorecard, recent updates, and current conviction level.
+### 步驟五：輸出
 
-## Important Notes
+適用於以下場合的論點摘要：
+- 盤前選股討論
+- 持倉定期審查
+- 風控部位評估
 
-- A thesis should be falsifiable — if nothing could disprove it, it's not a thesis
-- Track disconfirming evidence as rigorously as confirming evidence
-- Review theses at least quarterly, even when nothing dramatic has happened
-- If the user manages multiple positions, offer to do a full portfolio thesis review
-- Store thesis data in a structured format so it can be referenced across sessions
+**格式：** 包含計分卡、近期更新記錄、當前信心水準的簡潔 Markdown 摘要，可附加至晨報或投資日誌。
+
+## 注意事項
+
+- 論點必須可被證偽——若沒有任何事可以推翻它，那就不算是好論點
+- 對反向證據的追蹤應與正向證據同等嚴謹，避免確認偏誤
+- 至少每季審視一次論點，即便沒有重大事件發生
+- 台股資料來源：MOPS 公開資訊觀測站、台灣證交所、TEJ 台灣經濟新報
+- 若使用者管理多個部位，可提供全部位論點健康度總覽
+- 以結構化格式儲存論點，方便跨對話引用與歷史比對
