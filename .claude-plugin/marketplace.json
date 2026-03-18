@@ -1,26 +1,42 @@
 {
-  "name": "台股金融分析插件",
-  "owner": { "name": "台股短波段交易系統" },
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "tw-stock-trading",
+  "description": "台股短波段交易與金融分析工具集：選股、技術分析、財報研究、資產配置",
+  "owner": {
+    "name": "oange6214"
+  },
   "plugins": [
     {
       "name": "taiwan-trading",
+      "version": "1.0.0",
+      "description": "台股兩週短波段交易系統：選股、技術分析、籌碼面判斷、波段進出場策略",
+      "author": { "name": "oange6214" },
       "source": "./taiwan-trading",
-      "description": "台股兩週短波段交易系統：選股、技術分析、籌碼面判斷、波段進出場策略"
+      "category": "finance"
     },
     {
       "name": "financial-analysis",
+      "version": "1.0.0",
+      "description": "核心財務分析工具：DCF、同業比較、三表模型、競爭分析",
+      "author": { "name": "oange6214" },
       "source": "./financial-analysis",
-      "description": "核心財務分析工具：DCF、同業比較、三表模型、競爭分析"
+      "category": "finance"
     },
     {
       "name": "equity-research",
+      "version": "1.0.0",
+      "description": "個股研究工具：財報分析、盈餘預測、產業報告、晨報",
+      "author": { "name": "oange6214" },
       "source": "./equity-research",
-      "description": "個股研究工具：財報分析、盈餘預測、產業報告、晨報"
+      "category": "finance"
     },
     {
       "name": "wealth-management",
+      "version": "1.0.0",
+      "description": "投資組合管理工具：投資組合再平衡、財務規劃、投資報告",
+      "author": { "name": "oange6214" },
       "source": "./wealth-management",
-      "description": "投資組合管理工具：投資組合再平衡、財務規劃、投資報告"
+      "category": "finance"
     }
   ]
 }
