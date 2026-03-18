@@ -4,10 +4,11 @@
       "command": "C:/Users/his62/.local/bin/uv.exe",
       "args": [
         "run",
+        "--project",
+        "C:/Users/his62/tw-stock-agent",
         "python",
-        "mcp_server.py"
-      ],
-      "cwd": "C:/Users/his62/tw-stock-agent"
+        "C:/Users/his62/tw-stock-agent/mcp_server.py"
+      ]
     }
   }
 }
