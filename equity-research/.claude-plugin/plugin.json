@@ -1,8 +1,1 @@
-{
-  "name": "equity-research",
-  "version": "0.1.0",
-  "description": "個股研究工具：台股財報分析、盈餘預測、產業報告、投資主題追蹤、晨報",
-  "author": {
-    "name": "Anthropic FSI"
-  }
-}
+{"name":"equity-research","version":"1.0.0","description":"個股研究工具：台股財報分析、盈餘預測、產業報告、投資主題追蹤、晨報","author":{"name":"Anthropic FSI"}}
