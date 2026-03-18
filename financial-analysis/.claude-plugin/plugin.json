@@ -1,0 +1,8 @@
+{
+  "name": "financial-analysis",
+  "version": "0.1.0",
+  "description": "核心財務分析工具：DCF 估值、同業比較、三表模型、競爭分析、試算表稽核",
+  "author": {
+    "name": "Anthropic FSI"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "wealth-management",
+  "version": "0.1.0",
+  "description": "投資組合管理工具：投資組合再平衡、財務規劃、客戶投資報告",
+  "author": {
+    "name": "Anthropic FSI"
+  }
+}

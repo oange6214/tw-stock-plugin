@@ -1,0 +1,26 @@
+{
+  "name": "台股金融分析插件",
+  "owner": { "name": "台股短波段交易系統" },
+  "plugins": [
+    {
+      "name": "taiwan-trading",
+      "source": "./taiwan-trading",
+      "description": "台股兩週短波段交易系統：選股、技術分析、籌碼面判斷、波段進出場策略"
+    },
+    {
+      "name": "financial-analysis",
+      "source": "./financial-analysis",
+      "description": "核心財務分析工具：DCF、同業比較、三表模型、競爭分析"
+    },
+    {
+      "name": "equity-research",
+      "source": "./equity-research",
+      "description": "個股研究工具：財報分析、盈餘預測、產業報告、晨報"
+    },
+    {
+      "name": "wealth-management",
+      "source": "./wealth-management",
+      "description": "投資組合管理工具：投資組合再平衡、財務規劃、投資報告"
+    }
+  ]
+}
