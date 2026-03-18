@@ -8,7 +8,7 @@ This document provides step-by-step instructions for executing Task 2 (Financial
 
 **Prerequisites**: ⚠️ Verify before starting
 - **Required**: Access to company financial data
-  - For public companies: Latest 10-K and recent 10-Qs from SEC EDGAR
+  - For public companies: 最新年報 and 近期季報 from 公開資訊觀測站（MOPS）
   - For private companies: Financial statements or estimates from available sources
   - OR: Pre-extracted historical financials provided by user
 - **Optional**: Company research (Task 1) for business context
@@ -28,7 +28,7 @@ This document provides step-by-step instructions for executing Task 2 (Financial
 **BEFORE STARTING - CHECK:**
 
 **Option A: Extract financials directly (most common)**
-- [ ] Have access to 10-K filings (public company)?
+- [ ] Have access to 年報s (public company)?
 - [ ] OR have access to financial statements (private company)?
 - [ ] Ready to create Excel file for historical extraction?
 
@@ -40,7 +40,7 @@ This document provides step-by-step instructions for executing Task 2 (Financial
 **Optional Context:**
 - [ ] Company research (Task 1) complete for business understanding?
 
-**IF VERIFICATION FAILS**: Stop and obtain access to financial statements (10-K or equivalent) before proceeding.
+**IF VERIFICATION FAILS**: Stop and obtain access to financial statements (年報 or equivalent) before proceeding.
 
 ---
 
@@ -78,10 +78,10 @@ This document provides step-by-step instructions for executing Task 2 (Financial
 
 **For Public Companies:**
 
-1. **Download 10-K Filing**
-   - Go to SEC EDGAR (https://www.sec.gov/edgar/searchedgar/companysearch.html)
+1. **Download 年報 Filing**
+   - Go to 公開資訊觀測站（MOPS） (https://www.mops.twse.com.tw/searchedgar/companysearch.html)
    - Search for company name or ticker
-   - Download latest 10-K (annual report)
+   - Download latest 年報 (annual report)
    - Navigate to Item 8: Financial Statements and Supplementary Data
 
 2. **Create Historical Financials Excel File**
@@ -147,7 +147,7 @@ This document provides step-by-step instructions for executing Task 2 (Financial
 7. **Document Sources and Notes**
    - Create Sheet 5: "Notes"
    - Document:
-     - 10-K filing date and fiscal year end
+     - 年報 date and fiscal year end
      - Any one-time items or adjustments noted
      - Non-GAAP vs GAAP differences
      - Segment breakdown (if revenue split by product/geography)
@@ -172,7 +172,7 @@ This document provides step-by-step instructions for executing Task 2 (Financial
 - [ ] Numbers reconcile across statements (net income ties)
 - [ ] Key metrics calculated correctly
 - [ ] Excel file saved and can be opened
-- [ ] Data sources documented (10-K dates, page numbers)
+- [ ] Data sources documented (年報 dates, page numbers)
 
 **Foundation for projection model is now complete. Proceed to Step 2.**
    - Capital expenditures

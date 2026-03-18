@@ -289,7 +289,7 @@ Precedent transactions values a company based on prices paid for similar compani
 - Control premium paid
 
 **Sources:**
-- SEC filings (S-4, 8-K, proxy statements)
+- 公開資訊觀測站申報文件 (S-4, 重大訊息, proxy statements)
 - Press releases and investor presentations
 - M&A databases (CapIQ, FactSet, Bloomberg)
 

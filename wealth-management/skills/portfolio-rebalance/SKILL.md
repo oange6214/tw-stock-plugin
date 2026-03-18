@@ -1,78 +1,102 @@
-# Portfolio Rebalance
+# 投資組合再平衡
 
-description: Analyze portfolio allocation drift and generate rebalancing trade recommendations across accounts. Considers tax implications, transaction costs, and wash sale rules. Triggers on "rebalance", "portfolio drift", "allocation check", "rebalancing trades", or "my portfolio is out of balance".
+description: 分析投資組合配置偏離並產生再平衡交易建議，考量台灣稅務影響、交易成本與補充保費。觸發條件：「再平衡」、「投資組合偏離」、「配置檢視」、「再平衡交易」、「我的投資組合失衡了」。
 
-## Workflow
+## 工作流程
 
-### Step 1: Current State
+### 第一步：現況確認
 
-For each account, capture:
-- Account type (taxable, IRA, Roth, 401k)
-- Holdings with current market value
-- Cost basis (for taxable accounts)
-- Unrealized gains/losses per position
+針對每個帳戶收集：
+- 帳戶類型（台股、海外券商、銀行信託、退休金帳戶）
+- 各部位現值與成本價
+- 未實現損益（含持有期間）
+- 台股部位的股利配發紀錄（補充保費試算用）
 
-### Step 2: Drift Analysis
+### 第二步：偏離分析
 
-Compare current allocation to IPS targets:
+對比目前配置與目標配置：
 
-| Asset Class | Target % | Current % | Drift | $ Over/Under |
-|------------|----------|-----------|-------|-------------|
-| US Large Cap Equity | | | | |
-| US Small/Mid Cap | | | | |
-| International Developed | | | | |
-| Emerging Markets | | | | |
-| Investment Grade Bonds | | | | |
-| High Yield / Credit | | | | |
-| TIPS / Inflation Protected | | | | |
-| Alternatives | | | | |
-| Cash | | | | |
+| 資產類別 | 目標 % | 現況 % | 偏離 | 金額差異 |
+|---------|--------|--------|------|---------|
+| 台股（大型股/ETF） | | | | |
+| 台股（中小型股） | | | | |
+| 美股/海外股票 | | | | |
+| 債券/固定收益 | | | | |
+| 不動產（REITs） | | | | |
+| 現金/定存 | | | | |
 
-Flag positions exceeding the rebalancing band (typically ±3-5%).
+標記超出再平衡閾值的部位（通常 ±3-5%）。
 
-### Step 3: Trade Recommendations
+### 第三步：台灣稅務考量
 
-Generate trades to bring allocation back to target:
+#### 股票交易稅務
 
-**Tax-Aware Rebalancing Rules:**
-- Prefer rebalancing in tax-advantaged accounts (IRA, Roth) first — no tax consequences
-- In taxable accounts, avoid selling positions with large short-term gains
-- Harvest losses where possible while rebalancing
-- Watch for wash sale rules (30-day window) across all accounts
-- Consider directing new contributions to underweight asset classes instead of trading
+| 項目 | 說明 |
+|------|------|
+| 證券交易稅 | **賣出金額 × 0.3%**（當沖減半 0.15%）|
+| 資本利得稅 | **目前免徵**（股票買賣價差不課稅）|
+| 股利補充保費 | **2.11%**（單次股利超過 2,000 元才計）|
 
-**Trade List:**
+#### 再平衡的稅務優先順序
 
-| Account | Action | Security | Shares/$ | Reason | Tax Impact |
-|---------|--------|----------|----------|--------|-----------|
-| | Buy/Sell | | | Rebalance / TLH | ST gain / LT gain / Loss |
+1. **優先在退休金帳戶再平衡**（勞退自提帳戶、年金保單）
+   - 帳戶內交易無稅務問題
 
-### Step 4: Asset Location Review
+2. **使用新資金補足低配資產**
+   - 避免賣出，只補買，無交易稅負擔
 
-Optimize which assets are held in which account types:
-- **Tax-deferred (IRA/401k)**: Bonds, REITs, high-turnover funds (highest tax drag)
-- **Roth**: Highest expected growth assets (tax-free growth)
-- **Taxable**: Tax-efficient equity (index funds, ETFs, munis), tax-loss harvesting candidates
+3. **賣出台股時的成本考量**
+   - 需繳 0.3% 證券交易稅
+   - 資本利得免稅，但高配息股賣出可能錯失未來補充保費優化機會
 
-### Step 5: Implementation
+4. **避免當沖再平衡**
+   - 除非確有必要，否則當沖交易稅 0.15% 仍是額外成本
 
-- Total trades by account
-- Estimated transaction costs
-- Estimated tax impact (realized gains/losses)
-- Net effect on allocation drift
+#### 補充保費最小化策略
 
-### Step 6: Output
+若持有高配息股（配息率 > 5%），考量：
+- **分批換股**降低單次股利超過 2,000 元的頻率
+- 改持有**股票型 ETF**（季配或年配，可控制單次金額）
+- **累積型基金**完全不配息，完全避開補充保費
 
-- Drift analysis table
-- Recommended trade list (Excel)
-- Tax impact summary
-- Before/after allocation comparison
+### 第四步：再平衡交易建議
 
-## Important Notes
+按優先順序排列：
 
-- Don't rebalance for rebalancing's sake — small drift within bands is fine
-- Tax costs can outweigh rebalancing benefits in taxable accounts — calculate the breakeven
-- Consider pending cash flows (contributions, withdrawals, RMDs) before trading
-- Check for any client-specific restrictions (ESG, concentrated stock, lockups)
-- Document rationale for every trade for compliance records
-- Wash sale rules apply across accounts — coordinate trades across the household
+**A 類：立即執行（偏離 > 5%，無顯著稅務成本）**
+| 標的 | 操作 | 數量 | 預估成本 |
+|------|------|------|---------|
+| | | | |
+
+**B 類：下次新資金優先買入（低配但尚在閾值內）**
+| 標的 | 操作 | 建議金額 |
+|------|------|---------|
+| | | |
+
+**C 類：觀察（高配息股，賣出需評估補充保費影響）**
+| 標的 | 說明 | 建議 |
+|------|------|------|
+| | | |
+
+### 第五步：交易後預期配置
+
+| 資產類別 | 再平衡後 % | 距目標差距 | 預估年度補充保費 |
+|---------|-----------|-----------|---------------|
+| | | | |
+
+### 第六步：輸出文件
+
+- 再平衡交易清單（含優先順序與稅務說明）
+- 稅務影響試算（補充保費、證券交易稅）
+- 再平衡後配置預覽圖
+- 下次再平衡建議時間
+
+---
+
+## 重要提醒
+
+- 台灣股票買賣**無資本利得稅**，但需繳 0.3% 證券交易稅（賣方負擔）
+- **補充保費**按 2.11% 計算，單次股利 / 利息 / 租金超過 2,000 元才觸發
+- 再平衡不應只看報酬，**補充保費最小化**也是重要目標
+- 若帳戶規模較小，交易成本（手續費 + 交易稅）可能超過再平衡效益
+- 海外帳戶（複委託或直接開戶）的稅務另計，需分開處理

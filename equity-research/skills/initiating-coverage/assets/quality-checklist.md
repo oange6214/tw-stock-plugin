@@ -104,7 +104,7 @@ Before delivering an initiation report, verify all items below are complete.
 
 **Hyperlinks:** ⭐⭐⭐ MANDATORY
 - [ ] ALL URLs are CLICKABLE HYPERLINKS (not plain text)
-- [ ] SEC filings hyperlinked to EDGAR viewer
+- [ ] 公開資訊觀測站申報文件 hyperlinked to 公開資訊觀測站
 - [ ] Earnings transcripts hyperlinked (Seeking Alpha or company IR)
 - [ ] Press releases hyperlinked to company IR page
 - [ ] Presentations hyperlinked to PDF URLs
@@ -116,7 +116,7 @@ Before delivering an initiation report, verify all items below are complete.
 **Reference Page:**
 - [ ] "Data Sources & References" page at end of report
 - [ ] Lists ALL sources used in report
-- [ ] Sources organized by category (SEC Filings, Earnings Transcripts, etc.)
+- [ ] Sources organized by category (公開資訊觀測站申報文件, Earnings Transcripts, etc.)
 - [ ] Every source has date
 - [ ] Every source has clickable hyperlink (where applicable)
 

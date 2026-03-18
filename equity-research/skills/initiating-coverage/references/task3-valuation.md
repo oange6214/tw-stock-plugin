@@ -310,7 +310,7 @@ Base Case: Rev CAGR = 25%, EBITDA Margin = 32% → $56
 
 **Data sources:**
 - FactSet, CapitalIQ, Bloomberg (preferred)
-- Company 10-Ks/10-Qs for actuals
+- Company 年報s/季報s for actuals
 - Consensus estimates from Yahoo Finance, Seeking Alpha (if pro tools unavailable)
 
 #### C. Calculate Valuation Multiples

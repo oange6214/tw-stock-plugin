@@ -54,8 +54,8 @@ Use when the user requests:
 **Include specific citations WITH CLICKABLE LINKS in every figure and table:**
 
 ```
-Source: Q3 2024 10-Q filed November 8, 2024; Company earnings release
-        [Hyperlink "10-Q" to: https://www.sec.gov/cgi-bin/viewer?accession=...]
+Source: Q3 2024 季報 filed November 8, 2024; Company earnings release
+        [Hyperlink "季報" to: https://www.sec.gov/cgi-bin/viewer?accession=...]
         [Hyperlink "earnings release" to: https://investor.company.com/news/q3-2024]
 ```
 
@@ -68,7 +68,7 @@ Source: Q3 2024 10-Q filed November 8, 2024; Company earnings release
 
 Cite in every earnings update:
 - ✅ Earnings release (with date and URL)
-- ✅ 10-Q filing (with filing date and EDGAR link)
+- ✅ 季報 (with filing date and 公開資訊觀測站 link)
 - ✅ Earnings call transcript (with date)
 - ✅ Investor presentation/supplemental materials (if available)
 - ✅ Consensus estimates source (Bloomberg/FactSet/etc. with date)
@@ -85,7 +85,7 @@ Earnings Materials (Q3 2024):
 • Earnings Release (November 7, 2024)
   [Hyperlink entire line to: https://investor.company.com/news/q3-2024-earnings]
 
-• Form 10-Q (Filed November 8, 2024)
+• 季報（申報日期 November 8, 2024)
   [Hyperlink to: https://www.sec.gov/cgi-bin/viewer?accession=...]
 
 • Earnings Call Transcript (November 7, 2024)
@@ -103,7 +103,7 @@ Earnings Materials (Q3 2024):
 - [ ] Key statistics have footnotes
 - [ ] Sources section lists all materials with URLs
 - [ ] ALL URLs are CLICKABLE HYPERLINKS (not plain text)
-- [ ] All SEC filings hyperlinked to EDGAR viewer
+- [ ] All 公開資訊觀測站申報文件 hyperlinked to 公開資訊觀測站
 
 ### 5. Updated Estimates
 - Update forward estimates based on results

@@ -434,7 +434,7 @@ Valuation Implications:
 **Data Sources & References**
 - All sources listed with dates
 - Organized by category:
-  - SEC Filings (with EDGAR links)
+  - 公開資訊觀測站申報文件 (with 公開資訊觀測站 links)
   - Earnings Calls (with transcript links)
   - Company Materials
   - Industry Reports
@@ -987,7 +987,7 @@ Use Claude's DOCX skill to:
    - Add heading: 'Data Sources & References' (level 1)
    - List all sources used throughout the report
    - Organize by category:
-     - SEC Filings (10-K, 10-Q, DEF 14A, 8-K with EDGAR links)
+     - 公開資訊觀測站申報文件 (年報, 季報, DEF 14A, 重大訊息 with 公開資訊觀測站 links)
      - Earnings Calls (with transcript links)
      - Company Materials (investor presentations, press releases)
      - Industry Reports (Gartner, Forrester, etc.)

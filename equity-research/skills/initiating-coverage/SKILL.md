@@ -102,7 +102,7 @@ Select which task to execute:
 | Task | Name | Prerequisites | Output |
 |------|------|--------------|--------|
 | **1** | Company Research | Company name/ticker | 6-8K word document |
-| **2** | Financial Modeling | 10-K or financials access | Excel model (6 tabs) |
+| **2** | Financial Modeling | 年報 or financials access | Excel model (6 tabs) |
 | **3** | Valuation Analysis | Financial model (Task 2) | Valuation + price target |
 | **4** | Chart Generation | Tasks 1, 2, 3 + external data | 25-35 PNG/JPG charts |
 | **5** | Report Assembly | ALL previous tasks (1-4) | 30-50 page DOCX report |
@@ -216,7 +216,7 @@ Request 5: Task 5 - Report Assembly (requires ALL previous task outputs)
 
 **Prerequisites**: ⚠️ Verify before starting
 - **Required**: Access to company financial data
-  - For public companies: Latest 10-K from SEC EDGAR
+  - For public companies: 最新年報 from 公開資訊觀測站（MOPS）
   - For private companies: Financial statements or available estimates
   - OR: Pre-extracted historical financials provided by user
 - **Optional**: Company research (Task 1) for business context
@@ -226,7 +226,7 @@ Request 5: Task 5 - Report Assembly (requires ALL previous task outputs)
 BEFORE STARTING - Select approach:
 
 Option A: Extract financials (most common)
-- [ ] Have access to 10-K or financial statements?
+- [ ] Have access to 年報 or financial statements?
 - [ ] Ready to extract 3-5 years of data?
 
 Option B: User provided pre-extracted financials

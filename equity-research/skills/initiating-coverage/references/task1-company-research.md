@@ -16,11 +16,11 @@ This document provides step-by-step instructions for executing Task 1 (Company R
 ## Data Sources to Gather
 
 ### Primary Sources (Company)
-- **SEC Filings (for public companies):**
-  - Latest 10-K: Business description, risk factors, MD&A, financials
-  - Recent 10-Qs: Quarterly updates
-  - DEF 14A (Proxy): Executive compensation, board composition
-  - 8-Ks: Material events, acquisitions, management changes
+- **公開資訊觀測站申報文件 (for public companies):**
+  - 最新年報： Business description, risk factors, MD&A, financials
+  - 近期季報: Quarterly updates
+  - 股東會年報（委託書）: Executive compensation, board composition
+  - 重大訊息： Material events, acquisitions, management changes
 
 - **Company Website & IR:**
   - Investor presentations
@@ -35,7 +35,7 @@ This document provides step-by-step instructions for executing Task 1 (Company R
   - Crunchbase or PitchBook for funding history
 
 ### Secondary Sources (Industry/Competitive)
-- Competitor websites and SEC filings
+- Competitor websites and 公開資訊觀測站申報文件
 - Industry research reports (Gartner, Forrester, IDC, etc.)
 - News articles and trade publications
 - Market research reports
@@ -52,7 +52,7 @@ This document provides step-by-step instructions for executing Task 1 (Company R
 - Competitive landscape and market share
 - Industry trends and growth drivers
 - Regulatory considerations
-- High-level financial metrics (from 10-K prose, not detailed extraction)
+- High-level financial metrics (from 年報 prose, not detailed extraction)
 
 ---
 
@@ -66,9 +66,9 @@ This document provides step-by-step instructions for executing Task 1 (Company R
    - Identify customer case studies
    - Note key metrics mentioned (employees, customers, etc.)
 
-2. **Gather SEC filings (if public)**
-   - Download latest 10-K from SEC EDGAR
-   - Download most recent 10-Q
+2. **Gather 公開資訊觀測站申報文件 (if public)**
+   - Download latest 年報 from 公開資訊觀測站（MOPS）
+   - Download 最新季報
    - Download latest DEF 14A (proxy statement)
    - Note filing dates
 
@@ -145,11 +145,11 @@ This document provides step-by-step instructions for executing Task 1 (Company R
    - Direct competitors (same products/markets)
    - Indirect competitors (substitute solutions)
    - Emerging competitors (disruptors)
-   - Check 10-K for company's own list of competitors
+   - Check 年報 for company's own list of competitors
 
 2. **Research each competitor**
    - Visit competitor website
-   - Review their SEC filings (if public)
+   - Review their 公開資訊觀測站申報文件 (if public)
    - Note key products and positioning
    - Identify differentiators
    - Estimate market share (if data available)

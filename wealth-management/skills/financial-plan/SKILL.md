@@ -1,115 +1,193 @@
-# Financial Plan
+# 財務規劃
 
-description: Build or update a comprehensive financial plan covering retirement projections, education funding, estate planning, and cash flow analysis. Use for new client onboarding, annual plan reviews, or scenario modeling. Triggers on "financial plan", "retirement plan", "can I retire", "education funding", "estate plan", "cash flow analysis", or "plan update".
+description: 建立或更新全面的財務規劃，涵蓋退休規劃、子女教育基金、遺產規劃、保險缺口分析與現金流預測。適用於新客戶入職、年度檢視或情境模擬。觸發條件：「財務規劃」、「退休規劃」、「我能退休嗎」、「教育基金」、「遺產規劃」、「現金流分析」、「財務計畫更新」。
 
-## Workflow
+## 工作流程
 
-### Step 1: Client Profile
+### 第一步：客戶基本資料
 
-Gather or confirm:
-- **Demographics**: Age, spouse age, dependents, life expectancy assumptions
-- **Employment**: Current income, expected raises, retirement age target
-- **Accounts**: All investment accounts with balances and asset allocation
-- **Income sources**: Salary, bonuses, rental income, Social Security estimates, pensions
-- **Expenses**: Current annual spending, expected changes (mortgage payoff, kids' independence)
-- **Liabilities**: Mortgage, student loans, other debt
-- **Insurance**: Life, disability, LTC, health
-- **Estate**: Wills, trusts, beneficiary designations, gifting strategy
+收集或確認：
+- **基本資料**：年齡、配偶年齡、子女人數與年齡、預估壽命
+- **就業狀況**：目前薪資、預期加薪幅度、目標退休年齡
+- **帳戶總覽**：所有投資帳戶餘額與資產配置
+- **收入來源**：薪資、獎金、租金收入、投資股利、勞保年金
+- **支出狀況**：目前年度生活支出、預期變化（房貸還清、子女獨立）
+- **負債狀況**：房貸、汽車貸款、其他負債
+- **保險**：壽險、意外險、醫療險、長照險、房火險
+- **遺產**：遺囑、信託、受益人指定、贈與計畫
 
-### Step 2: Cash Flow Analysis
+---
 
-Build annual cash flow projections:
+## 台灣稅制重點
 
-| Year | Age | Gross Income | Taxes | Living Expenses | Savings | Net Cash Flow |
-|------|-----|-------------|-------|-----------------|---------|--------------|
-| | | | | | | |
+### 所得稅
 
-Key inputs:
-- Inflation rate assumption (typically 2.5-3%)
-- Tax rate (marginal and effective)
-- Savings rate and where savings are directed (pre-tax, Roth, taxable)
+| 級距 | 稅率 |
+|------|------|
+| 0 ~ 590,000 | 5% |
+| 590,001 ~ 1,330,000 | 12% |
+| 1,330,001 ~ 2,660,000 | 20% |
+| 2,660,001 ~ 4,980,000 | 30% |
+| 4,980,001 以上 | 40% |
 
-### Step 3: Retirement Projections
+- 基本免稅額：92,000 元/人（2024年）
+- 標準扣除額：單身 124,000 元；夫妻 248,000 元
+- 薪資所得特別扣除額：207,000 元（上限）
 
-**Accumulation Phase:**
-- Current portfolio value
-- Annual contributions (401k, IRA, taxable)
-- Expected return by asset class
-- Monte Carlo simulation: probability of success at various spending levels
+### 股利所得課稅（二擇一）
 
-**Distribution Phase:**
-- Required annual spending in retirement (today's dollars → inflation-adjusted)
-- Social Security start age and benefit
-- Pension income (if any)
-- Portfolio withdrawal rate and sequence
-- Required Minimum Distributions (RMDs)
+**選項 A：合併計稅**
+- 股利納入綜合所得稅
+- 可抵扣 8.5% 股利可抵減稅額（上限 8 萬元/年）
+- 適合所得稅率 ≤ 20% 的投資人
 
-**Key Output:**
-- Projected portfolio value at retirement
-- Sustainable withdrawal rate
-- Probability of not running out of money (target >85%)
-- "What if" scenarios: retire early, market downturn, higher spending
+**選項 B：分離課稅**
+- 股利單獨以 **28%** 稅率分開計算
+- 不影響其他所得級距
+- 適合所得稅率 ≥ 30% 的投資人
 
-### Step 4: Goal-Specific Analysis
+### 二代健保補充保費（2.11%）
 
-#### Education Funding
-- Children's ages and target college start
-- Current 529 balances
-- Target funding level (public vs. private, 4-year vs. graduate)
-- Required monthly savings to reach goal
-- Financial aid considerations
+以下收入超過門檻須繳補充保費（單次給付超過 2,000 元）：
+| 項目 | 費率 | 上限 |
+|------|------|------|
+| 股利所得 | 2.11% | 1,000 萬元/次 |
+| 利息所得 | 2.11% | 1,000 萬元/次 |
+| 租金收入 | 2.11% | 1,000 萬元/次 |
+| 執行業務所得 | 2.11% | 1,000 萬元/次 |
+| 兼職薪資 | 2.11% | 1,000 萬元/次 |
 
-#### Estate Planning
-- Current estate value and projected growth
-- Estate tax exposure (federal and state)
-- Trust structures in place
-- Gifting strategy (annual exclusion, lifetime exemption usage)
-- Charitable giving plans
-- Beneficiary review
+**節稅策略**：
+- 分散股利發放時點，每次低於 2,000 元可免繳
+- 股票型 ETF 比現金股利股票每年補充保費較低
 
-#### Risk Management
-- Life insurance needs analysis (income replacement, debt payoff, education funding)
-- Disability insurance adequacy
-- Long-term care planning
-- Umbrella liability coverage
+### 資本利得稅
 
-### Step 5: Scenario Modeling
+> **台灣目前不課徵股票資本利得稅**（2024年現行制度）
+- 買賣股票的價差獲利免稅
+- 僅需繳交**證券交易稅 0.3%**（以賣出金額計算）
+- 基金受益憑證交易稅 0.1%
 
-Run key scenarios:
+### 房地合一稅（房產資本利得）
 
-| Scenario | Probability of Success | Portfolio at 90 | Notes |
-|----------|----------------------|-----------------|-------|
-| Base case | | | |
-| Retire 2 years early | | | |
-| 20% market drop in Year 1 | | | |
-| Higher spending (+20%) | | | |
-| One spouse lives to 95 | | | |
-| Long-term care event | | | |
+| 持有期間 | 稅率 |
+|---------|------|
+| ≤ 2 年 | 45% |
+| 2~5 年 | 35% |
+| 5~10 年 | 20% |
+| > 10 年 | 15% |
+| 自用住宅（6 年以上） | 10%（400萬免稅額） |
 
-### Step 6: Recommendations
+### 遺產稅與贈與稅
 
-Prioritized action items:
-1. Savings rate changes
-2. Asset allocation adjustments
-3. Tax optimization (Roth conversions, tax-loss harvesting, asset location)
-4. Insurance gaps to fill
-5. Estate document updates
-6. Beneficiary designation review
+| 項目 | 免稅額 | 稅率 |
+|------|--------|------|
+| 遺產稅 | 1,333 萬元 | 10%（≤5千萬）/ 15% / 20% |
+| 贈與稅 | 244 萬元/年/人 | 10% / 15% / 20% |
 
-### Step 7: Output
+- 每年每人可免稅贈與 244 萬元（2024年）
+- 配偶間贈與免課贈與稅
 
-- Financial plan document (Word/PDF, 15-25 pages)
-- Cash flow projection spreadsheet (Excel)
-- Retirement projection charts
-- Goal funding analysis
-- Scenario comparison table
-- Action item checklist
+---
 
-## Important Notes
+### 第二步：現金流分析
 
-- Financial plans are living documents — review and update annually or after major life events
-- Be conservative with return assumptions — overestimating returns gives false confidence
-- Tax planning is as important as investment returns — model tax implications of every recommendation
-- Social Security timing is a major lever — model start ages of 62, 67, and 70
-- Always stress-test the plan — a plan that only works in the base case isn't a good plan
-- Compliance: ensure recommendations align with suitability/fiduciary standards
+建立年度現金流預測：
+
+| 年度 | 年齡 | 稅前總收入 | 所得稅 | 補充保費 | 生活支出 | 儲蓄 | 淨現金流 |
+|------|------|-----------|--------|----------|----------|------|---------|
+| | | | | | | | |
+
+關鍵輸入假設：
+- 通貨膨脹率：2-2.5%（台灣近年水準）
+- 有效稅率（含健保補充保費）
+- 儲蓄方向：台股、海外投資、不動產、定存
+
+### 第三步：退休規劃
+
+**累積階段：**
+- 目前投資組合市值
+- 年度儲蓄能力
+- 各資產類別預期報酬
+- 退休金試算（勞保年金 + 勞退 + 自有資產）
+
+**台灣退休金三層架構：**
+
+| 層次 | 來源 | 估算方式 |
+|------|------|---------|
+| 第一層 | 勞保老年年金 | 投保年資 × 平均薪資 × 1.55% |
+| 第二層 | 勞工退休金（勞退新制） | 累積帳戶餘額（雇主 6% + 自提 0-6%） |
+| 第三層 | 自有投資組合 | 4% 提領法則或固定金額提領 |
+
+**分配階段：**
+- 退休後年度所需支出（今日幣值 → 通膨調整）
+- 勞保年金領取時間點（60 vs 65 歲）
+- 投資組合提領順序
+- 退休後健保費與補充保費影響
+
+**關鍵輸出：**
+- 退休時預估總資產
+- 安全提領率（目標：資產可支撐至 90 歲）
+- 情境分析：提前退休、市場大跌、高通膨
+
+### 第四步：目標專項分析
+
+#### 子女教育基金
+- 子女年齡與預計就學時間
+- 國內大學 vs 海外留學費用預估
+- 目前教育基金餘額
+- 每月需存入金額計算
+
+#### 遺產規劃
+- 目前資產總值與預估增長
+- 遺產稅試算（超過 1,333 萬元免稅額的部分）
+- 可運用工具：
+  - 每年 244 萬元免稅贈與（提前移轉財富）
+  - 保險（壽險保額不計入遺產）
+  - 信託規劃
+
+#### 保險缺口分析
+- 壽險保額是否涵蓋家庭年支出 × 10-15 年
+- 醫療險與意外險是否充足
+- 長照險（高齡化社會必要性）
+- 實支實付 vs 日額型住院險
+
+### 第五步：情境模擬
+
+| 情境 | 說明 | 成功機率 |
+|------|------|---------|
+| 基準情境 | 65 歲退休，4% 提領 | |
+| 提早退休 | 55 歲退休 | |
+| 市場大跌 | 退休首年市場跌 30% | |
+| 高通膨 | 通膨率 3.5% 持續 | |
+| 長壽風險 | 活到 95 歲 | |
+| 需長照 | 10 年長期照顧費用 | |
+
+### 第六步：建議行動清單
+
+優先行動項目：
+1. 儲蓄率調整
+2. 資產配置優化
+3. 稅務優化（股利課稅選擇、補充保費規劃）
+4. 保險缺口填補
+5. 遺囑與受益人更新
+6. 勞退自提是否最大化（6%，可抵扣所得稅）
+
+### 第七步：輸出文件
+
+- 財務規劃報告（15-25 頁）
+- 現金流預測試算表（Excel）
+- 退休規劃圖表
+- 目標資金試算
+- 情境比較表
+- 行動清單
+
+---
+
+## 重要提醒
+
+- 財務計畫是活文件，每年或重大生活事件後應更新
+- 稅務試算應以當年度最新規定為準，必要時諮詢會計師
+- 補充保費試算需包含所有補充保費應計所得項目
+- 勞保年金與勞退試算可使用勞保局線上試算工具
+- 退休規劃需壓力測試——只在基準情境成立的計畫不夠穩健
