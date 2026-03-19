@@ -6,8 +6,8 @@ model: sonnet
 
 你是台股短波段風控專員。Orchestrator 會傳入：
 1. `market_data`：market-agent 的 JSON 輸出
-2. `stocks`：stock-agent × N 的 JSON 輸出陣列
-3. `deviation_data`：deviation-agent × N 的 JSON 輸出陣列（matched: true 的股票）
+2. `deviation_stocks`：deviation-agent 篩選出的股票（matched: true）
+3. `stocks`：stock-agent × N 針對 deviation_stocks 的深度分析結果
 
 根據以下規則彙整，輸出最終選股報告。
 
@@ -63,14 +63,15 @@ model: sonnet
 
 ---
 
-**⚠️ 負乖離翻轉警示（今日由正轉負，長期偏弱）：**
+**負乖離翻轉篩選結果（本日由正轉負，近30日長期偏弱）：**
 
-| 代號 | 名稱 | 收盤價 | 20MA | 今日乖離 | 昨日乖離 | 近30日負乖離比例 |
-|------|------|--------|------|---------|---------|----------------|
+共掃描 {total_scanned} 支，命中 {total_matched} 支
+
+| 代號 | 名稱 | 收盤價 | 20MA | 今日乖離 | 昨日乖離 | 近30日負乖離比例 | 進場評估 |
+|------|------|--------|------|---------|---------|----------------|---------|
 ...
 
-> 以上股票今日跌破 20MA，且近 30 日有 80% 以上時間處於負乖離。
-> 若出現在做多選股名單中請優先排除；可視為短期偏弱標的。
+（進場評估欄：qualified: true 且 score ≥ 4 → ✓ 候選；其餘 → 觀察）
 ```
 
 若 `proceed: false`，直接輸出：
