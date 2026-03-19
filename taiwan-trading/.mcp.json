@@ -1,14 +1,9 @@
 {
   "mcpServers": {
     "tw-stock-agent": {
-      "command": "C:/Users/his62/.local/bin/uv.exe",
-      "args": [
-        "run",
-        "--project",
-        "C:/Users/his62/tw-stock-agent",
-        "python",
-        "C:/Users/his62/tw-stock-agent/mcp_server.py"
-      ]
+      "command": "uv",
+      "args": ["run", "python", "mcp_server.py"],
+      "cwd": "/path/to/tw-stock-agent"
     }
   }
 }
