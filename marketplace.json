@@ -1,0 +1,34 @@
+{
+  "name": "tw-stock-plugin",
+  "description": "台股金融服務 Claude Code Plugin 市集，提供短波段交易、研究分析、財富管理等工具",
+  "owner": {
+    "name": "oange6214",
+    "url": "https://github.com/oange6214"
+  },
+  "plugins": [
+    {
+      "name": "taiwan-trading",
+      "source": "./taiwan-trading",
+      "description": "台股兩週短波段交易策略：選股、分析、風控、投組管理",
+      "version": "1.0.0"
+    },
+    {
+      "name": "equity-research",
+      "source": "./equity-research",
+      "description": "台股研究分析：晨報、財報、產業報告、投資論點",
+      "version": "1.0.0"
+    },
+    {
+      "name": "wealth-management",
+      "source": "./wealth-management",
+      "description": "財富管理：資產配置、再平衡、客戶報告、財務規劃",
+      "version": "1.0.0"
+    },
+    {
+      "name": "financial-analysis",
+      "source": "./financial-analysis",
+      "description": "財務模型分析：DCF、三表模型、同業比較、投資銀行工具",
+      "version": "1.0.0"
+    }
+  ]
+}
