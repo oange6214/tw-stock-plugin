@@ -39,11 +39,16 @@ uv sync
 uv run python mcp_server.py
 ```
 
-### 設定 MCP 路徑
+### 設定 MCP
 
-安裝完成後，修改下列兩個 `.mcp.json` 的 `cwd` 為你實際的路徑：
-- `taiwan-trading/.mcp.json`
-- `financial-analysis/.mcp.json`
+安裝完成後，在 `tw-stock-agent` 目錄下執行：
+
+```bash
+cd C:/Users/<你的帳號>/tw-stock-agent
+claude mcp add tw-stock-agent uv -- run python mcp_server.py
+```
+
+或手動在 Claude Code 設定檔加入：
 
 ```json
 {

@@ -1,9 +1,0 @@
-{
-  "mcpServers": {
-    "tw-stock-agent": {
-      "command": "uv",
-      "args": ["run", "python", "mcp_server.py"],
-      "cwd": "/path/to/tw-stock-agent"
-    }
-  }
-}
