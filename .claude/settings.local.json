@@ -20,7 +20,10 @@
       "Bash(find C:/Users/his62/AppData/Local/Temp/claude/D--Workspaces-Finances-tw-stock-plugin -name *.log -o -name mcp*)",
       "Bash(claude mcp:*)",
       "Bash(uvx --from git+https://github.com/clsung/tw-stock-agent tw-stock-agent)",
-      "Bash(uvx --from git+https://github.com/clsung/tw-stock-agent python -c \"from mcp_server import mcp; mcp.run\\(\\)\")"
+      "Bash(uvx --from git+https://github.com/clsung/tw-stock-agent python -c \"from mcp_server import mcp; mcp.run\\(\\)\")",
+      "mcp__plugin_taiwan-trading_tw-stock-agent__get_realtime_data",
+      "mcp__plugin_taiwan-trading_tw-stock-agent__get_price_history",
+      "mcp__plugin_taiwan-trading_tw-stock-agent__get_market_overview"
     ]
   }
 }
