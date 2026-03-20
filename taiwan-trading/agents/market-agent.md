@@ -16,6 +16,15 @@ model: haiku
 2. 查詢各族群近 5 日漲幅排行，選出前 3 強勢族群
 3. 判斷市場環境（強勢多頭 / 盤整 / 偏弱 / 空頭）
 
+## API 錯誤處理（重要）
+
+若 `get_market_overview` 回傳包含 `error` 欄位，或資料明顯不完整（例如指數值為 null），代表**API 暫時異常，不是市場真實訊號**。此時：
+
+- **不可**設定 `proceed: false`
+- 將 `market_status` 設為 `"資料暫時無法取得"`，其他無法計算的欄位填 `null`
+- 在 `data_warning` 欄位填入錯誤原因
+- `proceed` 維持 `true`，讓選股流程繼續進行
+
 ## 輸出格式（嚴格遵守）
 
 ```json
@@ -31,9 +40,13 @@ model: haiku
     "IC設計": "+2.1%"
   },
   "proceed": true,
-  "stop_reason": null
+  "stop_reason": null,
+  "data_warning": null
 }
 ```
 
-`proceed: false` 的條件：指數跌破 20MA，或外資期貨淨空單 > 1 萬口。
-此時填入 `stop_reason` 說明原因，其餘欄位仍需填入。
+`proceed: false` **只在以下真實市場條件**才設定：
+- 指數跌破 20MA，**且**資料完整可信（`data_warning` 為 null）
+- 外資期貨淨空單 > 1 萬口，**且**資料完整可信
+
+API 錯誤、資料解析失敗、或今日收盤資料尚未更新，一律 `proceed: true` + 填入 `data_warning`。
