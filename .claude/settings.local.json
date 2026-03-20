@@ -23,7 +23,9 @@
       "Bash(uvx --from git+https://github.com/clsung/tw-stock-agent python -c \"from mcp_server import mcp; mcp.run\\(\\)\")",
       "mcp__plugin_taiwan-trading_tw-stock-agent__get_realtime_data",
       "mcp__plugin_taiwan-trading_tw-stock-agent__get_price_history",
-      "mcp__plugin_taiwan-trading_tw-stock-agent__get_market_overview"
+      "mcp__plugin_taiwan-trading_tw-stock-agent__get_market_overview",
+      "WebSearch",
+      "Bash(python3 -c \":*)"
     ]
   }
 }
