@@ -3,7 +3,7 @@
     "allow": [
       "WebFetch(domain:www.twse.com.tw)",
       "Bash(Test-Path \"C:/Users/his62/.local/bin/uv.exe\")",
-      "Read(//c/Users/his62/tw-stock-agent/**)",
+      "Read(//c/Users/his62/tw-stock-mcp/**)",
       "Bash(\"C:/Users/his62/.local/bin/uv.exe\" run:*)",
       "Bash(echo \"EXIT:$?\")",
       "Bash(\"C:/Users/his62/.local/bin/uv.exe\" run python -c \":*)",
@@ -19,11 +19,11 @@
       "Bash(find C:/Users/his62/.claude -name *.log)",
       "Bash(find C:/Users/his62/AppData/Local/Temp/claude/D--Workspaces-Finances-tw-stock-plugin -name *.log -o -name mcp*)",
       "Bash(claude mcp:*)",
-      "Bash(uvx --from git+https://github.com/clsung/tw-stock-agent tw-stock-agent)",
-      "Bash(uvx --from git+https://github.com/clsung/tw-stock-agent python -c \"from mcp_server import mcp; mcp.run\\(\\)\")",
-      "mcp__plugin_taiwan-trading_tw-stock-agent__get_realtime_data",
-      "mcp__plugin_taiwan-trading_tw-stock-agent__get_price_history",
-      "mcp__plugin_taiwan-trading_tw-stock-agent__get_market_overview",
+      "Bash(uvx --from git+https://github.com/clsung/tw-stock-mcp tw-stock-mcp)",
+      "Bash(uvx --from git+https://github.com/clsung/tw-stock-mcp python -c \"from mcp_server import mcp; mcp.run\\(\\)\")",
+      "mcp__plugin_taiwan-trading_tw-stock-mcp__get_realtime_data",
+      "mcp__plugin_taiwan-trading_tw-stock-mcp__get_price_history",
+      "mcp__plugin_taiwan-trading_tw-stock-mcp__get_market_overview",
       "WebSearch",
       "Bash(python3 -c \":*)"
     ]

@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "tw-stock-mcp": {
+      "command": "tw-stock-mcp"
+    }
+  }
+}

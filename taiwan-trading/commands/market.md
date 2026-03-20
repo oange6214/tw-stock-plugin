@@ -3,7 +3,7 @@ description: 分析當前大盤環境與主流族群
 argument-hint: ""
 ---
 
-載入 `stock-screening` 技能，使用 tw-stock-agent 分析當前台股大盤環境，識別主流族群與資金流向。
+載入 `stock-screening` 技能，使用 tw-stock-mcp 分析當前台股大盤環境，識別主流族群與資金流向。
 
 分析內容：
 - 大盤指數位置（技術面支撐/壓力）

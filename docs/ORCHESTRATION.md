@@ -24,7 +24,7 @@
 - command 負責 orchestration
 - agent 負責單一角色輸出
 - skill 負責方法論與限制
-- 資料查詢由 `tw-stock-agent` 負責
+- 資料查詢由 `tw-stock-mcp` 負責
 
 ## 維護建議
 

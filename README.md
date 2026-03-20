@@ -1,12 +1,12 @@
 # tw-stock-plugin
 
-台股金融分析插件集合。這個專案是 workflow layer，負責把研究、選股、風控、財務分析任務拆成 commands、skills、agents，並透過 `tw-stock-agent` 取得資料。
+台股金融分析插件集合。這個專案是 workflow layer，負責把研究、選股、風控、財務分析任務拆成 commands、skills、agents，並透過 `tw-stock-mcp` 取得資料。
 
 ## 專案定位
 
 在整個 workspace 中：
 
-- `tw-stock-agent`：資料服務層
+- `tw-stock-mcp`：資料服務層
 - `tw-stock-plugin`：工作流與插件層
 - `tw-stock`：報告輸出工作區
 
@@ -16,7 +16,7 @@
 commands
 → agents
 → skills
-→ tw-stock-agent
+→ tw-stock-mcp
 → tw-stock reports
 ```
 
@@ -32,9 +32,9 @@ commands
 - `financial-analysis`: DCF、comps、模型分析
 - `wealth-management`: 投組檢視、再平衡、客戶報告
 
-## 與 tw-stock-agent 的關係
+## 與 tw-stock-mcp 的關係
 
-本專案不直接實作 market data provider，而是透過 `tw-stock-agent` 使用：
+本專案不直接實作 market data provider，而是透過 `tw-stock-mcp` 使用：
 
 - `get_stock_data`
 - `get_price_history`
@@ -69,7 +69,7 @@ commands
 ```text
 command
 → agent orchestration
-→ tw-stock-agent MCP tools/resources
+→ tw-stock-mcp MCP tools/resources
 → analysis result
 → write report to tw-stock/reports
 ```

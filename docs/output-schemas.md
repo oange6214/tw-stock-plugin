@@ -72,7 +72,7 @@ select.md 判斷 proceed/stop 邏輯由 orchestrator 自行根據以上欄位判
     "take_profit": 1035.0
   },
   "risks": ["market_weakness"],
-  "data_source": "tw-stock-agent"
+  "data_source": "tw-stock-mcp"
 }
 ```
 
