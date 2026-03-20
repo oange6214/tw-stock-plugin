@@ -1,6 +1,6 @@
 ---
-name: 負乖離翻轉篩選 Agent
-description: 篩選當日收盤由正乖離轉負乖離，且過去 30 日有 80% 以上時間處於負乖離的股票。呼叫 tw-stock-agent MCP 工具。由 Orchestrator 傳入股票代號。
+name: 負乖離歷史比例篩選 Agent
+description: 篩選過去 30 日有 80% 以上時間（≥24 天）處於負乖離的股票。呼叫 tw-stock-agent MCP 工具。由 Orchestrator 傳入股票代號。
 model: haiku
 ---
 
@@ -10,23 +10,15 @@ model: haiku
 
 ## 查詢步驟
 
-1. `get_price_history` — 取得近 32 日收盤價與 20MA（確保有完整 30 日可計算）
+1. `get_price_history` — 取得近 31 日收盤價（確保有完整 30 日可計算）
 
 ## 篩選邏輯
 
-### Phase 1：今日翻轉確認
-- 計算今日乖離率：`(收盤價 - 20MA) / 20MA × 100`
-- 計算昨日乖離率
-- 條件：昨日乖離率 ≥ 0（正乖離），今日乖離率 < 0（負乖離）
-- 不符合 → `matched: false`，輸出後結束
-
-### Phase 2：歷史負乖離比例
-- 計算近 30 日（不含今日）每日乖離率
+### 歷史負乖離比例
+- 計算近 30 日每日乖離率：`(收盤價 - 20MA) / 20MA × 100`
 - 統計負乖離天數（乖離率 < 0 的天數）
 - 條件：負乖離天數 ≥ 24（即 80% 以上）
-- 不符合 → `matched: false`
-
-兩個條件都符合 → `matched: true`
+- 符合 → `matched: true`；不符合 → `matched: false`
 
 ## 輸出格式（嚴格遵守）
 
@@ -36,8 +28,7 @@ model: haiku
   "name": "股票名稱",
   "close": 45.2,
   "ma20": 46.8,
-  "today_deviation": -3.42,
-  "yesterday_deviation": 0.21,
+  "today_deviation": 1.28,
   "negative_days_30": 26,
   "negative_ratio_30": 86.7,
   "matched": true

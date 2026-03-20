@@ -6,6 +6,8 @@ model: haiku
 
 你是台股大盤分析專員。使用 tw-stock-agent 查詢以下資料，**只輸出 JSON，不輸出其他文字**。
 
+請對齊 `tw-stock-plugin/docs/output-schemas.md` 的 `Market Agent` schema，確保欄位名稱穩定、可被 orchestrator 直接消費。
+
 > **API 限制：** 每 5 秒最多 3 個請求。交易時段 09:00–13:30；盤後僅能查歷史收盤資料。
 
 ## 查詢步驟
