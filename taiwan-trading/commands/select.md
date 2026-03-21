@@ -3,7 +3,7 @@ description: 執行台股兩週短波段選股（multi-agent 版本）
 argument-hint: "[可選：指定股票代號清單，例如 '2330 2454 2382'；留空則自動從 TWSE 抓取篩選清單]"
 ---
 
-分析最近一個交易日的收盤資料，任何時間均可執行（不限定盤後，週末或假日同樣可用）。
+分析 TWSE 最近一個交易日的收盤資料。直接分析歷史資料，**不判斷當前是否開盤、是否交易日、現在時間**。
 
 > **前置條件**：工作目錄下需有 `.mcp.json` 掛載 `tw-stock-mcp`，否則 MCP 工具無法使用。
 > 若尚未建立，請在工作目錄新增：
@@ -58,55 +58,75 @@ get_deviation_scan(stock_codes="2330,2454,2382,...")
 ...
 ```
 
-若 `matched` 為空 → 直接進入 Phase 3，回報「本日無符合標的」。
+### 若 matched 為空 → **立即結束**
 
-## Phase 2：個股深度分析
+儲存篩選結果後，輸出：
 
-> **重要：子 agent 無法存取 MCP 工具，不可啟動 stock-agent。**
-> 直接在主對話用 Python 抓取資料並計算技術指標。
+> 本次掃描 {total_scanned} 支，無股票通過負乖離歷史篩選（條件：近 30 日負乖離天數 ≥ 24 天，且最後交易日乖離 0–5%）。分析結束。
 
-對 `matched` 中所有股票，在主對話以 Python 計算技術指標。
+**不繼續執行 Phase 2–5。**
 
-> **注意**：`get_price_history` 與 `get_realtime_data` 底層使用 `twstock`（`requests` 函式庫），
-> 受 TWSE SSL 憑證問題影響會失敗。改為直接用 `aiohttp`（已內建 SSL bypass）呼叫 TWSE STOCK_DAY API：
+## Phase 2：均線分析
+
+> **重要：不要啟動子 agent，直接在主對話以 Python 抓取資料並計算均線。**
+
+對 `matched` 中所有股票，使用標準函式庫 `urllib`（不需安裝額外套件）呼叫 **FinMind TaiwanStockPrice** API，取得近 6 個月收盤資料：
 
 ```python
-import aiohttp, ssl, asyncio
+import urllib.request, json, datetime
 
-SSL_CTX = ssl.create_default_context()
-SSL_CTX.check_hostname = False
-SSL_CTX.verify_mode = ssl.CERT_NONE
+FINMIND_URL = "https://api.finmindtrade.com/api/v4/data"
 
-async def fetch_twse_month(session, code, ym):
-    url = f"https://www.twse.com.tw/exchangeReport/STOCK_DAY?date={ym}01&stockNo={code}&response=json"
-    async with session.get(url, ssl=SSL_CTX, timeout=aiohttp.ClientTimeout(total=15)) as r:
-        if r.status == 200:
-            data = await r.json(content_type=None)
-            if data.get("stat") == "OK":
-                return [(row[0], float(row[6].replace(",", ""))) for row in data["data"]]
-    return []
+def fetch_price(code, months=6):
+    end = datetime.date.today().isoformat()
+    year = datetime.date.today().year
+    month = datetime.date.today().month - months
+    if month <= 0:
+        month += 12; year -= 1
+    start = f"{year}-{month:02d}-01"
+    url = f"{FINMIND_URL}?dataset=TaiwanStockPrice&data_id={code}&start_date={start}&end_date={end}"
+    with urllib.request.urlopen(url, timeout=15) as r:
+        data = json.loads(r.read())
+    rows = data.get("data", [])
+    closes = [float(row["close"]) for row in rows if row.get("close")]
+    last_date = rows[-1]["date"] if rows else ""
+    return closes, last_date
 ```
 
-產業別可用 `get_stock_data(stock_code=code)` 取得（不受 SSL 問題影響）。
+> FinMind 不受 TWSE SSL 限制，可正確取得 2026 年資料。免費 tier 無需 token，限速 30 req/day；設定 `FINMIND_API_TOKEN` 環境變數可提升上限。
 
-計算指標：RSI14、KD9、MA5/MA20/MA60，搭配乖離率進行評分。
+計算指標：**MA5 / MA20 / MA60**，以及收盤對各均線的乖離百分比。
 
-腳本輸出每支股票的 `stock_data`，包含：
-- 基本資料（收盤、均線、產業）
-- 技術指標（RSI14、MACD、KD9）
-- 量比（今日量 / 5日均量）
-- 進場訊號判斷（breakout / ma60_reclaim / none）
-- 評分（0–100）與分項說明
+產業別使用 `get_stock_data(stock_code=code)` MCP 工具取得。
 
-## Phase 3：彙整與風控
+**最後交易日**：`deviation_scan` 結果已包含 `last_trading_date` 欄位；若為空，從上方 FinMind 資料取最後一筆的 `date`。
+
+腳本輸出每支股票的 `ma_data`，包含：
+- 基本資料（收盤、產業別、last_trading_date）
+- 均線（MA5、MA20、MA60）
+- 收盤距各均線乖離（vs_ma5、vs_ma20、vs_ma60，正值代表收盤在均線上方）
+- 進場訊號判斷（ma60_reclaim / none）
+
+## Phase 3：基本面分析
+
+根據公司名稱與產業別，直接使用 **Claude 知識庫** 輸出以下分析（不呼叫任何外部 API，標注「資料截至 2025/08」）：
+
+- **業務描述**：公司主力產品 / 服務，一句話說明核心競爭力
+- **營收結構**：主要收入來源（產品線或地區），大致比例
+- **市場競爭地位**：在產業中的定位（市佔 / 客戶 / 護城河）
+- **產業成長展望**：所屬產業未來 1–2 年趨勢（AI、電動車、伺服器需求等）
+
+> 若公司知名度不高或資料有限，如實說明「資訊有限」，不要捏造。
+
+## Phase 4：彙整與風控
 
 啟動：
 
 - **risk-agent**（`taiwan-trading/agents/risk-agent.md`）
-  — 傳入 `deviation_stocks`（Phase 1 matched 清單）與所有 `stock_data`
+  — 傳入 `deviation_stocks`（Phase 1 matched 清單）、所有 `ma_data`、所有 `fundamental_data`（量化 + 質化）
   — 輸出最終 Markdown 選股報告
 
-## Phase 4：儲存（**必須執行，不可略過**）
+## Phase 5：儲存（**必須執行，不可略過**）
 
 risk-agent 輸出報告後，**立即**使用 Write 工具將完整報告儲存：
 
