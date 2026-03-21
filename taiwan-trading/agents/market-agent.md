@@ -4,6 +4,12 @@ description: 查詢台股大盤環境與族群資金動能，輸出結構化 JSO
 model: haiku
 ---
 
+> **⚠️ 此 agent 已由主對話直接執行取代，保留作為規格文件。**
+>
+> 原因：子 agent 無法存取 MCP 工具。`select.md` Phase 1 直接在主對話呼叫 `get_market_overview`。
+
+---
+
 你是台股大盤分析專員。使用 tw-stock-mcp 查詢以下資料，**只輸出 JSON，不輸出其他文字**。
 
 請對齊 `tw-stock-plugin/docs/output-schemas.md` 的 `Market Agent` schema，確保欄位名稱穩定、可被 orchestrator 直接消費。
