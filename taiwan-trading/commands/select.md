@@ -44,7 +44,8 @@ get_deviation_scan(stock_codes="2330,2454,2382,...")
 
 工具回傳後，立即將 `matched` 清單儲存（**必須執行**）：
 
-- 路徑：`reports/taiwan-trading/YYYY-MM-DD_deviation.md`（相對於 terminal 工作目錄）
+- 路徑：`reports/taiwan-trading/YYYY-MM-DD_HHMM_deviation.md`（相對於 terminal 工作目錄）
+- YYYY-MM-DD 為最後交易日日期，HHMM 為當前執行時間（同一天可執行多次不互蓋）
 - 若目錄不存在先建立
 
 ```markdown
@@ -109,7 +110,7 @@ async def fetch_twse_month(session, code, ym):
 
 risk-agent 輸出報告後，**立即**使用 Write 工具將完整報告儲存：
 
-- 路徑：`reports/taiwan-trading/YYYY-MM-DD_select.md`（相對於 terminal 工作目錄）
-- YYYY-MM-DD 替換為今日日期
+- 路徑：`reports/taiwan-trading/YYYY-MM-DD_HHMM_select.md`（相對於 terminal 工作目錄）
+- YYYY-MM-DD 為最後交易日日期，HHMM 為當前執行時間（同一天可多次執行，結果累計不互蓋）
 - 若目錄不存在，先建立目錄再寫入
-- 儲存完成後回覆：「✓ 報告已儲存至 reports/taiwan-trading/YYYY-MM-DD_select.md」
+- 儲存完成後回覆：「✓ 報告已儲存至 reports/taiwan-trading/YYYY-MM-DD_HHMM_select.md」
