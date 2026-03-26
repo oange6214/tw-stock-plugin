@@ -27,9 +27,9 @@ get_deviation_scan(stock_codes="")
 ```
 
 工具內部會：
-1. 從 `STOCK_DAY_ALL` 抓取當日清單（4 位數代號、TradeValue > 1 億）
+1. 從 `STOCK_DAY_ALL` 抓取當日清單（4 位數代號）
 2. 抓取近 **6 個月** TWSE STOCK_DAY 資料（自動處理 SSL 憑證問題；5 個月資料量不足 91 筆門檻，全部股票會被 skip）
-3. 計算 60MA（季線）乖離率，篩選：今日乖離 0~5%，近 30 日負乖離 ≥ 24 天
+3. 計算 60MA（季線）乖離率，篩選：今日乖離 0~10%，近 30 日負乖離 ≥ 24 天
 4. 回傳 `matched` 陣列
 
 ### 若提供了股票代號
@@ -109,14 +109,94 @@ def fetch_price(code, months=6):
 
 ## Phase 3：基本面分析
 
-根據公司名稱與產業別，直接使用 **Claude 知識庫** 輸出以下分析（不呼叫任何外部 API，標注「資料截至 2025/08」）：
+### 量化部分（即時資料）
 
-- **業務描述**：公司主力產品 / 服務，一句話說明核心競爭力
-- **營收結構**：主要收入來源（產品線或地區），大致比例
-- **市場競爭地位**：在產業中的定位（市佔 / 客戶 / 護城河）
-- **產業成長展望**：所屬產業未來 1–2 年趨勢（AI、電動車、伺服器需求等）
+對 `matched` 中所有股票，在主對話直接呼叫 MCP 工具 `get_fundamental_data(stock_code=code)`，取得：
+- `eps_ttm`：近四季累計 EPS
+- `eps_history`：近 12 季 EPS（計算年度趨勢）
+- `per_quarterly`：各季 PER
 
-> 若公司知名度不高或資料有限，如實說明「資訊有限」，不要捏造。
+### 質化部分（Gemini Search Grounding）
+
+> **重要：不要啟動子 agent，直接在主對話以 Python 腳本呼叫 Gemini API。**
+
+在主對話執行以下 Python 腳本（透過 Bash 工具），API key 從環境變數 `GEMINI_API_KEY` 讀取：
+
+```python
+import urllib.request, json, os, time
+
+GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent"
+
+def get_profile(code, name, industry):
+    api_key = os.environ.get("GEMINI_API_KEY", "")
+    if not api_key:
+        return {
+            "code": code, "name": name,
+            "business_summary": "GEMINI_API_KEY 未設定",
+            "revenue_structure": "無資料", "competitive_position": "無資料",
+            "industry_outlook": "無資料", "source": "error"
+        }
+    prompt = f"""請查詢台灣上市公司 {code} {name}（產業別：{industry}）。
+以繁體中文，嚴格按以下 JSON 格式回答，不要有其他文字：
+{{
+  "business_summary": "主力產品/服務與核心競爭力（60字內）",
+  "revenue_structure": "主要收入來源與大致比例（80字內）",
+  "competitive_position": "市場定位、市佔或護城河（80字內）",
+  "industry_outlook": "所屬產業未來1-2年趨勢（80字內）"
+}}
+資訊不足的欄位填「資訊有限」，不得捏造。"""
+
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}],
+        "tools": [{"google_search": {}}],
+        "generationConfig": {"temperature": 0.1, "maxOutputTokens": 512}
+    }
+    req = urllib.request.Request(
+        f"{GEMINI_URL}?key={api_key}",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+        method="POST"
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            result = json.loads(r.read())
+        text = result["candidates"][0]["content"]["parts"][0]["text"].strip()
+        if "```" in text:
+            text = text.split("```")[1]
+            if text.startswith("json"): text = text[4:]
+        profile = json.loads(text.strip())
+        profile.update({"code": code, "name": name, "source": "gemini-search"})
+        return profile
+    except Exception as e:
+        return {
+            "code": code, "name": name,
+            "business_summary": f"查詢失敗：{str(e)[:80]}",
+            "revenue_structure": "無資料", "competitive_position": "無資料",
+            "industry_outlook": "無資料", "source": "error"
+        }
+
+# ===== 替換為實際 matched 股票清單 =====
+stocks = [
+    {"code": "2059", "name": "川湖", "industry": "電子工業"},
+    # ... 其他股票
+]
+
+results = []
+for s in stocks:
+    results.append(get_profile(s["code"], s["name"], s["industry"]))
+    time.sleep(3)
+
+# 寫入 UTF-8 檔案避免終端機亂碼
+import datetime
+out_path = f"reports/taiwan-trading/gemini_profiles_{datetime.date.today()}.json"
+with open(out_path, "w", encoding="utf-8") as f:
+    json.dump(results, f, ensure_ascii=False, indent=2)
+print(f"已寫入 {out_path}")
+```
+
+取得結果後，讀取 JSON 檔案，提取每支股票的 `business_summary`、`revenue_structure`、`competitive_position`、`industry_outlook` 供 Phase 4 使用。
+
+> 若回傳 `source == "error"`，在報告中標注「業務資訊查詢失敗，請自行查閱公開說明書」。不得以 Claude 知識庫補充或捏造業務描述。
 
 ## Phase 4：彙整與風控
 

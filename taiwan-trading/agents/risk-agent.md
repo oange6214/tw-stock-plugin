@@ -77,7 +77,7 @@ model: sonnet
 
 > **產業成長展望：** {industry_outlook}
 
-> 質化資訊截至 2025/08，僅供參考，請自行確認最新狀況。
+> 質化資訊來源：Gemini Search Grounding（即時搜尋）。KY 股建議核對公開說明書。
 
 **評分：{score}/5** — {一句話說明評分理由與建議}
 

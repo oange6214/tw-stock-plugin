@@ -8,7 +8,7 @@ model: haiku
 >
 > 原因：(1) 子 agent 無法存取 MCP 工具；(2) `get_price_history` 底層 `twstock` 受 TWSE SSL 憑證問題影響，呼叫必然失敗。
 >
-> **實際執行方式**：`select.md` Phase 2 直接在主對話用 `aiohttp` + SSL bypass 呼叫 TWSE STOCK_DAY API，計算 MA5/MA20/MA60。Phase 3 直接呼叫 `get_fundamental_data` MCP tool 取得 PE/EPS，並以 Claude 知識庫輸出質化分析。
+> **實際執行方式**：`select.md` Phase 2 直接在主對話用 `urllib` 呼叫 FinMind TaiwanStockPrice API，計算 MA5/MA20/MA60。Phase 3 呼叫 `get_fundamental_data` MCP tool 取得 PE/EPS（量化），並透過 Gemini `gemini-flash-lite-latest` + Search Grounding 取得即時質化分析（業務描述、競爭地位、產業展望）。
 
 ---
 

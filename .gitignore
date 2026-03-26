@@ -14,6 +14,7 @@ node_modules/
 vendor/
 venv/
 env/
+.venv/
 __pycache__/
 *.pyc
 
@@ -34,14 +35,25 @@ target/
 # Testing
 coverage/
 .coverage
+.coverage.*
 *.cover
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
 
 # Package files
 *.egg-info/
 .eggs/
 
+# Tooling
+.python-version
+
 # Personal files
 TASKS.md
 MEMORY.md
 .claude/worktrees/
+
+# Local workspace integration
+.mcp.json
+reports/
